@@ -24,7 +24,10 @@ body {
 .border-line {
     border-right: 1px solid #EEEEEE
 }
-
+.alert {
+    color: #db3f4c;
+    white-space: nowrap;
+  }
 .facebook {
     background-color: #3b5998;
     color: #fff;
