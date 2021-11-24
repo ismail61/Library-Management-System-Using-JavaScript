@@ -1,6 +1,3 @@
-const imageFunc = async () => {
-    return await localStorage.getItem('image')
-}
 
 //Add Book
 const addBook = async e => {

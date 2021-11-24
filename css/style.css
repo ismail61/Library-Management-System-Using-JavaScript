@@ -17,6 +17,9 @@ body {
 .navbar .dropdown-item{
     color:black;
 }
+.navbar .auth{
+    display: flex;
+}
 
 
 /* Hero Section */
@@ -183,11 +186,10 @@ a {
     .border-line {
         border-right: none
     }
-
-    .card2 {
-        border-top: 1px solid #EEEEEE !important;
-        margin: 0px 15px
+    .navbar .auth{
+        display: inline;
     }
+    
 }
 
 
