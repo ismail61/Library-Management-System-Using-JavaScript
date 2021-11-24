@@ -1,9 +1,6 @@
 //Email Validation
 const validMail = (mail) => {
-    if (/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(mail)) {
-        return true
-    }
-    return false
+    return (/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(mail)) ? true : false
 }
 
 const errMsg = (node, msg) => {
@@ -26,14 +23,15 @@ const SignUp = e => {
             email: document.getElementById('email').value,
             password: document.getElementById('password').value
         }
-        if (user.name.length < 6) {
-            errMsg(err, 'Name must be 6 characters')
-        } else if (user.password.length < 6) {
-            errMsg(err, 'Password must be 6 characters')
-        } else if (!validMail(user.email)) {
-            errMsg(err, 'Please provide valid Email Address')
-        } else {
-            if (user) {
+        if (user) {
+            if (user.name.length < 6) {
+                errMsg(err, 'Name must be 6 characters')
+            } else if (user.password.length < 6) {
+                errMsg(err, 'Password must be 6 characters')
+            } else if (!validMail(user.email)) {
+                errMsg(err, 'Please provide valid Email Address')
+            } else {
+
                 let users = new Array()
                 users = JSON.parse(localStorage.getItem('users')) ? JSON.parse(localStorage.getItem('users')) : []
                 users.push(user)
