@@ -7,46 +7,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
+    <script src="http://www.w3schools.com/lib/w3data.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="./Css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark" style="padding: 1%;">
-        <div class="container">
-            <a href="#" class="navbar-brand">Library Management System</a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                <div class="navbar-nav">
-                    <a href="./index.html" class="nav-item nav-link active">Home</a>
-                    <a href="#" class="nav-item nav-link">Profile</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Messages</a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">Inbox</a>
-                            <a href="#" class="dropdown-item">Sent</a>
-                            <a href="#" class="dropdown-item">Drafts</a>
-                        </div>
-                    </div>
-                </div>
-                <form class="d-flex">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <button type="button" class="btn btn-secondary" style="height: 40px;"><i class="bi-search"></i></button>
-                    </div>
-                    <div class="navbar-nav">
-                        <a href="./signIn.html" class="nav-item nav-link">Login</a>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </nav>
+    <div w3-include-html="./includes/navbar.html"></div>
     <div class="container px-1 px-md-5 px-lg-1 px-xl-5 mx-auto">
         <div class="card card0 border-0">
             <div class="row d-flex">
@@ -58,21 +28,24 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="card2 card border-0 px-4 py-4">
-                        <div class="row mb-4 px-3">
-
-                            <h6 class="mb-0 mr-4 mt-2">Sign up with</h6>
-                            <div class="facebook text-center mr-3">
-                                <i class="fab fa-facebook-f"></i>
+                    <div class="border-0 px-4 py-4">
+                        <div class="d-flex">
+                            <div class="stay-with mt-1">
+                                Stay with us
                             </div>
-                            <div class="twitter text-center mr-3">
-                                <i class="fab fa-google"></i>
-                            </div>
-                            <div class="linkedin text-center mr-3">
-                                <i class="fab fa-linkedin-in"></i>
+                            <div class="social d-flex">
+                                <div class="facebook mx-1 text-center">
+                                    <i class="fab fa-facebook-f"></i>
+                                </div>
+                                <div class="twitter mx-1 text-center">
+                                    <i class="fab fa-google"></i>
+                                </div>
+                                <div class="linkedin mx-1 text-center">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </div>
                             </div>
                         </div>
-                        <div class="row px-3 mb-4">
+                        <div class="row px-3 mb-2 mt-3">
                             <div class="line"></div>
                             <small class="or text-center">OR</small>
                             <div class="line"></div>
@@ -110,7 +83,7 @@
                             </center>
                         </form>
                         <div class="row mb-4 px-3">
-                            <small class="font-weight-bold">To keep connected with us please login with your personal
+                            <small class="font-weight-bold text-sm">To keep connected with us please login with your personal
                                 info <a href="./signIn.html" class="text-danger ">Sign In</a>
                             </small>
                         </div>
@@ -119,7 +92,10 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="./Js/script.js"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
+    <script>
+        w3IncludeHTML();
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -1,3 +1,6 @@
+
+
+
 //Email Validation
 const validMail = (mail) => {
     return (/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(mail)) ? true : false
@@ -61,16 +64,31 @@ const SignIn = e => {
         } else {
             const getUsers = JSON.parse(localStorage.getItem('users'))
             let ok = false
+            let loginUser = {}
             for (let getUser of getUsers) {
                 if (getUser.email === user.email && getUser.password === user.password) {
                     ok = true
+                    loginUser = getUser
                     break
                 }
             }
-            ok ? console.log("Successfully Sign In") : console.log("Invalid Credentials")
+            if (ok) {
+                //console.log(loginUser)
+                Object.assign(loginUser,{
+                    login : true
+                })
+                
+                localStorage.setItem('Islogin',JSON.stringify(loginUser))
+                window.open('../LibaryManagementSystem/addbook.html','_self')
+            } else {
+                errMsg(err, 'Invalid Credentials')
+            }
         }
 
     }
 }
 
 SignIn();
+
+
+
