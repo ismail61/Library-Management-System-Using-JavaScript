@@ -21,6 +21,15 @@ const addBook = async e => {
             image: reader.result
         })
         localStorage.setItem("books", JSON.stringify(books));
+        document.getElementById('title').value = ''
+        document.getElementById('author').value = ''
+        document.getElementById('isbn').value = ''
+        document.getElementById('coverimage').value =''
+        document.getElementById('successful').innerHTML = 'New Book added Successful'
+        setTimeout(() => {
+            document.getElementById('successful').innerHTML = ''
+        }, 2000)
+         
     }, false);
 
     if (imgPath) {

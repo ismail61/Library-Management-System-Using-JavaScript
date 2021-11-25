@@ -53,7 +53,7 @@
                         <a href="./signUp.html" class="nav-item nav-link">
                             <i class="fas fa-user-plus"></i> Signup</a>
                     </div>
-                    <div id="logout" class="navbar-nav">
+                    <div id="logout" onclick="Logout(event)" class="navbar-nav">
                         <a href="./index.html" class="nav-item nav-link">
                             <i class="fas fa-sign-out-alt"></i></i> Logout</a>
                     </div>
@@ -109,6 +109,7 @@
         </table>
     </form>
     <center>
+        <div id="successful" class="m-0 p-0 text-success"></div>
         <div class="container all-books">
             To see all books Please visit <a href="./showbooks.html">Books</a>
         </div>
@@ -119,6 +120,7 @@
     </script> -->
     <script type="text/javascript" src="./js/addbook.js"></script>
     <script type="text/javascript" src="./js/navbar.js"></script>
+    <script type="text/javascript" src="./js/logout.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
