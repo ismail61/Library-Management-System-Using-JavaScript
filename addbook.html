@@ -71,7 +71,10 @@
         </div>
     </nav>
     <form class="p-5" role="form" onsubmit="addBook(event)">
-        <table border="2" align="center" cellpadding="5" cellspacing="5">
+        <center>
+            <strong id="alert"  style="color: rgb(95, 5, 5);"></strong>
+        </center>
+        <table  border="2" align="center" cellpadding="5" cellspacing="5">
             <tr>
                 <td>Enter ISBN :</td>
                 <td>
@@ -115,7 +118,7 @@
         </table>
     </form>
     <center>
-        <div id="successful" class="m-0 p-0 text-success"></div>
+        <div id="successful" style="color: blue;"></div>
         <div class="container all-books">
             To see all books Please visit <a href="./showbooks.html">Books</a>
         </div>
