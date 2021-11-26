@@ -6,6 +6,7 @@ const addBook = async e => {
         title: document.getElementById('title').value,
         author: document.getElementById('author').value,
         isbn: document.getElementById('isbn').value,
+        price : document.getElementById('price').value
     }
     const imgPath = document.querySelector('input[type=file]').files[0];
     const reader = new FileReader();
@@ -18,6 +19,7 @@ const addBook = async e => {
             title: book.title,
             author: book.author,
             isbn: book.isbn,
+            price : book.price,
             image: reader.result
         })
         localStorage.setItem("books", JSON.stringify(books));
@@ -25,6 +27,7 @@ const addBook = async e => {
         document.getElementById('author').value = ''
         document.getElementById('isbn').value = ''
         document.getElementById('coverimage').value =''
+        document.getElementById('price').value = ''
         document.getElementById('successful').innerHTML = 'New Book added Successful'
         setTimeout(() => {
             document.getElementById('successful').innerHTML = ''

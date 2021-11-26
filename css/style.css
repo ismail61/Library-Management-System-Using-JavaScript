@@ -231,7 +231,7 @@ a {
 .card-title {
     margin-top: 0px;
     font-weight: 700;
-    font-size: 1.65em;
+    font-size: 1.2em;
 }
 
 .card-title a {
@@ -240,17 +240,15 @@ a {
 }
 
 
-.author {
-    
+.footer {
     padding: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
+    font-weight: 500;
 }
-.author .edit{
+.footer .edit{
     cursor: pointer;
     font-size: 18px;
 }
-.author .delete{
+.footer .delete{
     cursor: pointer;
     font-size: 18px;
 }
