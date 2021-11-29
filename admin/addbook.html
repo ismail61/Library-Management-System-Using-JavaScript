@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Library Management System | Admin</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <script src="http://www.w3schools.com/lib/w3data.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script>
+        let user = JSON.parse(localStorage.getItem("adminlogin"));
+        if (!user) {
+            window.open("./index.html", "_self");
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-blue" style="padding: 1%;">
+        <div class="container">
+            <a href="./index.html" class="navbar-brand">Library Management <span class="system">System</span></a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon">
+                    <i class="fas fa-bars" style="color:#fff; font-size:28px;"></i>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="book-or-home">
+                    <div class="navbar-nav" id="home">
+                        <a href="./index.html" class="nav-item nav-link active">Home</a>
+                    </div>
+                    <div class="navbar-nav" id="book">
+                        <a href="./addbook.html" class="nav-item nav-link active">Add Book</a>
+                    </div>
+                </div>
+
+                <div id="auth" class="auth">
+                    <div id="signin" class="navbar-nav">
+                        <a href="./signIn.html" class="nav-item nav-link">
+                            <i class="fas fa-sign-in-alt"></i> Signin</a>
+                    </div>
+                    <div id="signup" class="navbar-nav">
+                        <a href="./signUp.html" class="nav-item nav-link">
+                            <i class="fas fa-user-plus"></i> Signup</a>
+                    </div>
+                    <div id="logout" onclick="Logout(event)" class="navbar-nav">
+                        <a href="./index.html" class="nav-item nav-link">
+                            <i class="fas fa-sign-out-alt"></i></i> Logout</a>
+                    </div>
+                    <div class="nav-item dropdown profile">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profile</a>
+                        <div class="dropdown-menu">
+                            <a href="./profile.html" class="dropdown-item">My Account</a>
+                            <a href="./showbooks.html" class="dropdown-item">Books</a>
+                            <a href="./showorders.html" class="dropdown-item">Orders</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+    <form class="p-5" role="form" onsubmit="addBook(event)">
+        <center>
+            <strong id="alert"  style="color: rgb(95, 5, 5);"></strong>
+        </center>
+        <table  border="2" align="center" cellpadding="5" cellspacing="5">
+            <tr>
+                <td>Enter ISBN :</td>
+                <td>
+                    <input id="isbn" type="text" name="isbn" size="48" required />
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Title :</td>
+                <td>
+                    <input id="title" type="text" name="title" size="48" required />
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Author :</td>
+                <td>
+                    <input id="author" type="text" name="author" size="48" required />
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Edition :</td>
+                <td>
+                    <input id="edition" type="text" name="edition" size="48" required />
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Price :</td>
+                <td>
+                    <input id="price" type="number" name="price" size="48" required />
+                </td>
+            </tr>
+            <tr>
+                <td>Cover Image :</td>
+                <td>
+                    <input id="coverimage" accept=".jpg, .jpeg, .png, .giff" type="file" name="coverimage" size="48"
+                        required />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div class="d-flex">
+                        <input class="mx-3 btn btn-blue" type="submit" value="submit" />
+                        <input class="mx-3 btn btn-blue" type="reset" value="Reset" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <center>
+        <div id="successful" style="color: blue;"></div>
+        <div class="container all-books">
+            To see all books Please visit <a href="./showbooks.html">Books</a>
+        </div>
+    </center>
+    <!-- Optional JavaScript -->
+    <!-- <script>
+        w3IncludeHTML();
+    </script> -->
+    <script type="text/javascript" src="./js/addbook.js"></script>
+    <script type="text/javascript" src="./js/navbar.js"></script>
+    <script type="text/javascript" src="./js/logout.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
