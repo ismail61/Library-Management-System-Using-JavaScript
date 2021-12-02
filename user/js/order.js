@@ -23,11 +23,14 @@ const Order = (isbn) =>{
     if(idMatch){
         random = Math.floor(Math.random() * 1000000) + 1;
     }
+    let date = new Date()
     Object.assign(orderBook,{
         id : random,
         userId : user.id,
-        status : 'pending'
+        status : 'pending',
+        date : `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`
     })
+    //console.log(orderBook)
     orders.push(orderBook);
     localStorage.setItem("orders",JSON.stringify(orders))
     alert("New Order Placed Successful\nThanks for your order")

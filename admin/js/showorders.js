@@ -1,11 +1,43 @@
-let loginAdmin = JSON.parse(localStorage.getItem('adminlogin'))
+const inputHandler = e => {
+    let orders = JSON.parse(localStorage.getItem('orders')) ? JSON.parse(localStorage.getItem('orders')) : []
+    let users = JSON.parse(localStorage.getItem('users')) ? JSON.parse(localStorage.getItem('users')) : []
+    const filterOrders = orders.filter(order => {
+        let filterUser = users.filter(user => {
+            return user.id == order.userId
+        })
+        return (
+            filterUser[0].name.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 ||
+            filterUser[0].email.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 ||
+            order.title.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 ||
+            order.id.toString().toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 ||
+            order.author.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 ||
+            order.price.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 ||
+            order.status.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 ||
+            order.isbn.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1
+        )
+    })
+    if (filterOrders) {
+        showOrders(filterOrders)
+    }
+}
+
+let search = document.getElementById('search')
+search.addEventListener('input', inputHandler)
+
+let admin = JSON.parse(localStorage.getItem('adminlogin'))
 
 
-const showOrders = (admin) => {
+const showOrders = (filterOrders) => {
     try {
+        let orders
+        let tableBody = document.getElementById('table-body')
+        if (!filterOrders) {
+            orders = JSON.parse(localStorage.getItem('orders')) ? JSON.parse(localStorage.getItem('orders')) : []
+        } else {
+            tableBody.innerHTML = ''
+            orders = filterOrders
+        }
         if (admin) {
-            let orders = JSON.parse(localStorage.getItem('orders')) ? JSON.parse(localStorage.getItem('orders')) : []
-            let tableBody = document.getElementById('table-body')
             let html = '';
             if (orders) {
                 let showOrders = []
@@ -34,21 +66,19 @@ const showOrders = (admin) => {
                                         class="btn mx-2 btn-danger m-0 text-white ">
                                         <i class="fa fa-close"></i>
                                     </div>`;
-                    let accepted = `<div class="text-success">Accepted</div>`;
-                    let rejected = `<div class="text-danger">Rejected</div>`
+                    let accepted = `<div class="text-success">Accepted <i class="fas mx-2 fa-check"></i></div>`;
+                    let rejected = `<div class="text-danger">Rejected <i class=" mx-3 fa fa-times" aria-hidden="true"></i></div>`
                     html += `
                         <tr class="cell">
-                            <td>#LMS-13487</td>
-                            <td>${order.title}</td>
-                            <td>$${order.price}</td>
-                            <td>${orderedUser.name}</td>
-                            <td>${orderedUser.email}</td>
-                            <td id="accept-reject">
+                            <td data="Order #">#LMS-${order.id}</td>
+                            <td data="Book Title">${order.title}</td>
+                            <td data="Total">$${order.price}</td>
+                            <td data="User Name">${orderedUser.name}</td>
+                            <td data="User Email">${orderedUser.email}</td>
+                            <td data="Accept/Reject" id="accept-reject">
                                ${(order.status == 'pending') ? pending : (order.status == 'accepted') ? accepted : rejected} 
                             </td >
-                        </tr >
-        `
-
+                        </tr >`
                 })
                 tableBody.innerHTML = html
             } else {
@@ -68,7 +98,7 @@ const showOrders = (admin) => {
         alert('Oops! Server Error')
     }
 }
-window.onload = showOrders(loginAdmin)
+window.onload = showOrders()
 function updateArray(key, idx, value) {
     var array = JSON.parse(localStorage.getItem(key));
     array[idx] = value;
@@ -88,7 +118,7 @@ const Accept = (id) => {
                 }
             })
             tableBody.innerHTML = ''
-            showOrders(loginAdmin)
+            showOrders()
         }
     } catch (error) {
         alert('Oops! Server Error')
@@ -107,7 +137,7 @@ const Reject = (id) => {
                 }
             })
             tableBody.innerHTML = ''
-            showOrders(loginAdmin)
+            showOrders()
         }
     } catch (error) {
         alert('Oops! Server Error')

@@ -5,19 +5,24 @@ body {
     background-color: #96a2a8;
     background-repeat: no-repeat
 }
+
 /* Navbar Start */
 .navbar {
     padding: 0 10px;
 }
-.navbar .navbar-brand{
+
+.navbar .navbar-brand {
     font-size: 23px;
 }
+
 .navbar a {
     color: white;
 }
-.navbar .admin{
+
+.navbar .admin {
     font-size: 20px;
 }
+
 .navbar a:hover {
     color: crimson;
 }
@@ -25,23 +30,27 @@ body {
 .navbar .dropdown-item {
     color: black;
 }
+
 .navbar .auth {
     display: flex;
 }
-.navbar .auth .nav-item{
+
+.navbar .auth .nav-item {
     font-size: 20px;
 }
+
 .navbar .collapse .book-or-home {
     display: flex;
     font-size: 20px;
 }
-.navbar .badge{
+
+.navbar .badge {
     background-color: rgb(184, 135, 71);
-    margin-left: 5px; 
+    margin-left: 5px;
     margin-right: 0px;
 }
 
-  
+
 /* Navbar End */
 
 /* Hero Image Start */
@@ -66,6 +75,7 @@ body {
 .border-line {
     border-right: 1px solid #fffefe
 }
+
 /* Error Message */
 .alert {
     color: #db3f4c;
@@ -141,7 +151,8 @@ body {
     font-weight: 400
 }
 
-input,textarea {
+input,
+textarea {
     padding: 10px 12px 10px 12px;
     border: 1px solid lightgrey;
     border-radius: 2px;
@@ -154,7 +165,8 @@ input,textarea {
     letter-spacing: 1px
 }
 
-input:focus,textarea:focus {
+input:focus,
+textarea:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
@@ -261,6 +273,9 @@ a {
 }
 
 /* Orders Show */
+.table {
+    border-collapse: collapse;
+}
 .cell {
     background: rgb(236, 226, 226);
     border-bottom: solid black;
@@ -269,6 +284,10 @@ a {
 thead {
     background: #dddcdc
 }
+.table tbody tr:nth-child(even) {
+    background: rgb(211, 205, 205);
+}
+
 
 /* Profile */
 .myprofile {
@@ -340,6 +359,7 @@ thead {
     .navbar-brand {
         font-size: 18px;
     }
+
     .container {
         width: 100% !important;
     }
@@ -367,6 +387,34 @@ thead {
         display: inline;
     }
 
+    .table thead {
+        display: none;
+    }
+
+    .table,
+    .table tbody,
+    .table tr,
+    .table td {
+        display: block;
+    }
+
+    .table tr {
+        margin-bottom: 10px;
+    }
+
+    .table td {
+        text-align: right;
+        position: relative;
+        padding-right: 3%;
+    }
+
+    .table td::before {
+        content: attr(data);
+        position: absolute;
+        left: 0;
+        padding-left: 3%;
+        font-weight: bold;
+    }
 }
 
 @media screen and (max-width: 500px) {

@@ -39,6 +39,7 @@ const addBook = async e => {
             // convert image file to base64 string and save to localStorage
             let books = new Array()
             books = JSON.parse(localStorage.getItem('books')) ? JSON.parse(localStorage.getItem('books')) : []
+            let date = new Date();
             books.push({
                 title: book.title,
                 author: book.author,
@@ -47,8 +48,9 @@ const addBook = async e => {
                 price: book.price,
                 image: reader.result,
                 bookId : admin.id   //Book Id Means Admin Id
+                
             })
-            
+            //console.log(books)
             localStorage.setItem("books", JSON.stringify(books));
             document.getElementById('title').value = ''
             document.getElementById('author').value = ''

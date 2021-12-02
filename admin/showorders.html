@@ -26,7 +26,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-blue" style="padding: 1%;">
         <div class="container">
-            <a href="./index.html" class="navbar-brand">Library Management System</a>
+            <a href="./index.html" class="navbar-brand">Library Management <span class="system">System</span></a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon">
                     <i class="fas fa-bars" style="color:#fff; font-size:28px;"></i>
@@ -35,7 +35,7 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="book-or-home">
                     <div class="navbar-nav" id="book">
-                        <a href="./showbooks.html" class="nav-item nav-link">Books</a>
+                        <a href="./addbook.html" class="nav-item nav-link">Add Book</a>
                     </div>
                 </div>
 
@@ -57,8 +57,14 @@
                 </div>
             </div>
     </nav>
-
-    <div class="container mt-5">
+    <div class="container mt-3">
+        <center>
+            <div style="width: 300px;" class="input-group">
+                <input type="text" id="search" class="form-control" placeholder="Search Here">
+            </div>
+        </center>
+    </div>
+    <div class="container mt-3">
         <div class="d-flex justify-content-center row">
             <div class="col-md-10">
                 <div class="rounded">
@@ -67,7 +73,7 @@
                             <thead>
                                 <tr>
                                 <th>Order #</th>
-                                <th>Book Name</th>
+                                <th>Book Title</th>
                                 <th>Total</th>
                                 <th>User Name</th>
                                 <th>User Email</th>

@@ -23,16 +23,21 @@ let admin = JSON.parse(localStorage.getItem('adminlogin'))
 
 const showBooks = (filterBook) => {
     let books
+    let allBooks = document.getElementById('books')
     if (!filterBook) {
         books = JSON.parse(localStorage.getItem('books')) ? JSON.parse(localStorage.getItem('books')) : []
-    } else {
-        let allBooks = document.getElementById('books')
+    } else { 
         allBooks.innerHTML = ''
         books = filterBook
     }
     if (books) {
-        let allBooks = document.getElementById('books')
+        let showBooks = []
         books.map(book => {
+            if (book.bookId == admin.id) {
+                showBooks.push(book)
+            }
+        })
+        showBooks.map(book => {
             let html = `
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="card">
@@ -68,8 +73,7 @@ const showBooks = (filterBook) => {
             allBooks.innerHTML += html
         })
     } else {
-        let allBooks = document.getElementById('books')
-        let html = `<div>Empty Books . Please add a book write now</div>`
+        let html = `<div>Empty Books . Please add a book now</div>`
         allBooks.innerHTML = html
     }
 }
