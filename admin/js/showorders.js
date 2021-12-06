@@ -110,15 +110,23 @@ const Accept = (id) => {
         let orders = JSON.parse(localStorage.getItem('orders')) ? JSON.parse(localStorage.getItem('orders')) : []
         let tableBody = document.getElementById('table-body')
         if (orders) {
+            let ok = false;
             orders.map((order, index) => {
                 if (order.id == id) {
                     order.status = 'accepted'
                     updateArray('orders', index, order)
+                    ok = true;
                     return;
                 }
             })
-            tableBody.innerHTML = ''
-            showOrders()
+            if(ok){
+                tableBody.innerHTML = ''
+                showOrders()
+            }else{
+                alert('Sorry This order has been deleted for some reason')
+                tableBody.innerHTML = ''
+                showOrders()
+            }
         }
     } catch (error) {
         alert('Oops! Server Error')

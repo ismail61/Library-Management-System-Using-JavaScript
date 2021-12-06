@@ -42,11 +42,11 @@ const showOrders = (filterOrders) => {
             //console.log(showOrders);
             showOrders.map(order => {
                 html += `
-                    <tr data-toggle="modal" data-target="#orderModal" style="cursor : pointer" onclick="singleOrderTrack(${order.id})" class="cell">  
-                        <td data="Order #">#LMS-${order.id}</td>
-                        <td data="Book Title">${order.title}</td>
-                        <td data="Status"><span class="${order.status == 'rejected' ? 'text-danger' : 'text-success'}">${order.status[0].toUpperCase()}${order.status.slice(1)} ${(order.status == 'accepted' ? '<i class="fas mx-2 fa-check"></i>' : '<i class=" mx-3 fa fa-times" aria-hidden="true"></i>')}</span></td>
-                        <td data="Total">$${order.price}</td>
+                    <tr class="cell">  
+                        <td data-toggle="modal" data-target="#orderModal" style="cursor : pointer" onclick="singleOrderTrack(${order.id})"  data="Order #">#LMS-${order.id}</td>
+                        <td data-toggle="modal" data-target="#orderModal" style="cursor : pointer" onclick="singleOrderTrack(${order.id})"  data="Book Title">${order.title}</td>
+                        <td data-toggle="modal" data-target="#orderModal" style="cursor : pointer" onclick="singleOrderTrack(${order.id})"  data="Status"><span class="${order.status == 'rejected' ? 'text-danger' : 'text-success'}">${order.status[0].toUpperCase()}${order.status.slice(1)} ${(order.status == 'accepted' ? '<i class="fas mx-2 fa-check"></i>' : '<i class=" mx-3 fa fa-times" aria-hidden="true"></i>')}</span></td>
+                        <td data-toggle="modal" data-target="#orderModal" style="cursor : pointer" onclick="singleOrderTrack(${order.id})"  data="Total">$${order.price}</td>
                         <td data="Action"><div style="cursor : pointer; padding : 3px 5px;" title="Delete" onclick="Delete(${order.id})" 
                         class="btn btn-danger ${order.status != 'pending' ? 'disabled' : ''} m-0 text-white delete"><i class="fas fa-trash-alt"></i>
                         </div></td>
@@ -75,12 +75,24 @@ window.onload = showOrders()
 const Delete = (id) => {
     let orders = JSON.parse(localStorage.getItem('orders')) ? JSON.parse(localStorage.getItem('orders')) : []
     if (orders) {
-        let newOrders = orders.filter(order => {
-            return order.id != id
+        let ok = false
+        orders.map(order => {
+            if(order.id == id && order.status =='pending'){
+                ok = true;
+                return
+            }
         })
-        localStorage.removeItem('orders')
-        localStorage.setItem('orders', JSON.stringify(newOrders))
-        showOrders()
+        if(ok){
+            let newOrders = orders.filter(order => {
+                return order.id != id
+            })
+            localStorage.removeItem('orders')
+            localStorage.setItem('orders', JSON.stringify(newOrders))
+            showOrders()
+        }else{
+            alert('Order cancellation is not possible right now')
+            showOrders()
+        }
     }
 }
 
